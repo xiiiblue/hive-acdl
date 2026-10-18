@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hive-os.local/schemas/design-requirement-traceability-v2.json",
+  "title": "蜂巢稳定设计要求追踪账本",
+  "type": "object",
+  "required": ["schemaVersion", "topics", "requirements"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 2 },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "supportingVerification"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "title": { "type": "string", "minLength": 1 },
+          "supportingVerification": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/verification" }
+          }
+        }
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "source", "definitionDigest", "origin", "topics", "directVerification"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^(PRD|DOM|ARCH|SEC)-[0-9]{3}$" },
+          "source": { "type": "string", "minLength": 1 },
+          "definitionDigest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "origin": {
+            "oneOf": [
+              { "const": "pre-req-process" },
+              { "type": "string", "pattern": "^REQ-[0-9]{6}$" }
+            ]
+          },
+          "topics": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+          },
+          "directVerification": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/verification" }
+          },
+          "issues": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^ISSUE-[0-9]{6}$" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "verification": {
+      "type": "object",
+      "required": ["method", "references"],
+      "additionalProperties": false,
+      "properties": {
+        "method": { "enum": ["test", "inspection", "analysis", "demonstration"] },
+        "references": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

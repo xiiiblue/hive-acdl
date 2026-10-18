@@ -1,0 +1,21 @@
+{
+  "name": "hive-acdl",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node scripts/verify/check-project.mjs && node scripts/verify/check-traceability.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "docs:check": "node scripts/verify/check-project.mjs",
+    "secrets:check": "node scripts/verify/check-project.mjs --secrets-only",
+    "branch:check": "node scripts/verify/check-branch-name.mjs",
+    "trace:check": "node scripts/verify/check-traceability.mjs",
+    "trace:render": "node scripts/generate/render-traceability.mjs",
+    "trace:refresh": "node scripts/generate/refresh-traceability-digests.mjs",
+    "process:metrics": "node scripts/verify/process-metrics.mjs",
+    "diff:check": "git diff --check"
+  }
+}

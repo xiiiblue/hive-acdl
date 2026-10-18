@@ -1,0 +1,25 @@
+# 工具、依赖与采用方式
+
+需要Node.js 22+，无第三方npm依赖。Git用于分支/差异检查；工具不调用gh、SSH、Docker或网络服务。
+
+|命令|作用|写入|
+|---|---|---|
+|`npm run check`|本项目链接/锚点、敏感模式及设计追踪|无|
+|`npm run secrets:check`|敏感模式单独扫描|无|
+|`npm test`|隔离工具回归|仅.tmp临时fixture|
+|`npm run branch:check`|main、带编号工作分支或普通维护分支|无|
+|`npm run trace:check`|设计定义/摘要/验证标记/Issue双向关系/生成视图|无|
+|`npm run trace:render`|校验账本后重建追踪Markdown|IDX-002生成区|
+|`npm run trace:refresh -- --reviewed`|人工复核语义后刷新定义摘要|追踪JSON；不会执行测试|
+|`npm run process:metrics -- --format=json`|Loop积压、周期和首次验证结果|无|
+|`npm run diff:check`|Git差异空白检查|无|
+
+统计支持`--since=YYYY-MM-DD`、`--until=YYYY-MM-DD`、`--review-age-days=7`、`--format=text|json`，登记日期用于筛选，缺少时间的记录会明确排除；ACDL_TIMEZONE设置IANA时区，默认UTC。
+
+脚本以所在项目根目录为根。采用时复制scripts、模板和空白追踪骨架到目标项目，配置自己的package命令；不要让工具指向蜂巢源仓库。采用目录格式见本项目空白骨架。保持设计定义格式`**SEC-001**：规则正文`；JSON格式由tests/traceability中的schema与样例约束。
+
+纯函数`scripts/lib/loop.mjs`导出nextAclNumber、assertLoopTransition、aclRecordTemplate；模板函数由调用方提供branch、revision、date、goal、id、source、title，不读取其它仓库或自动创建记录。Issue登记表解析与双向链接函数在scripts/lib/governance/issue-registry.mjs。它们不是审批或收口引擎；调用方必须自行落实真实证据与授权。
+
+本版不提供issue:new/import/link/sync、loop:new/review/complete、自动档位verify或部署命令。使用[模板](../templates/README.md)维护记录，按规范核对结束依据；未来需要自动化时再设计通用接口及回归，不能绕过原验证条件。
+
+本项目链接检查仅校验仓库内Markdown目标及锚点，不联网检查来源GitHub权限或网页可用性。秘密扫描是启发式规则，不等于完整泄漏证明。
