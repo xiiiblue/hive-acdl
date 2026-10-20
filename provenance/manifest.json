@@ -1,6 +1,6 @@
 {
   "sourceRepository": "xiiiblue/hive-os",
-  "sourceCommit": "5d71f33176eb4ab4788e1c875b1a3eb3bf5bd22a",
+  "sourceCommit": "a3e7c38a12b26c2b19a8a687c169c778e1bbe4f6",
   "sourceBranch": "main",
   "sourceWorkingTree": "fixed committed Git objects only",
   "licenseFilesAtRoot": [],
@@ -287,7 +287,7 @@
     },
     {
       "source": "docs/11-手册/02-研发流程手册/README.md",
-      "sourceSha256": "50fe50fc21cd6812412fc75c98a2f905a469e06850501a75b3eb5383c18a1247",
+      "sourceSha256": "af14f966ce75e3d12d5df562b723614d195ae855637dd1de06de6b3b58e14f0f",
       "targets": [
         "docs/02-协作指南.md",
         "docs/03-工具与命令.md"
@@ -312,7 +312,7 @@
       "changes": "提炼问题、变化、验证和未完成范围"
     }
   ],
-  "previousSourceCommit": "3d3a634be5b401ef02740fdbebd00fcdc16fb2ff",
+  "previousSourceCommit": "5d71f33176eb4ab4788e1c875b1a3eb3bf5bd22a",
   "reviewedOn": "2026-10-20",
   "localAdditions": {
     "scripts/demo.mjs": "本仓库新建的非空教学示例生成器，非来源同名工具",
@@ -320,5 +320,6 @@
     "docs/04-完整示例.md": "可运行示例的文件、检查与局限说明",
     "docs/05-维护与来源.md": "通用整理稿维护与来源更新方式",
     ".github/workflows/checks.yml": "只读离线CI，验证Node.js22和24"
-  }
+  },
+  "initialSourceCommit": "3d3a634be5b401ef02740fdbebd00fcdc16fb2ff"
 }
