@@ -1,17 +1,17 @@
 {
   "sourceRepository": "xiiiblue/hive-os",
-  "sourceCommit": "3d3a634be5b401ef02740fdbebd00fcdc16fb2ff",
+  "sourceCommit": "5d71f33176eb4ab4788e1c875b1a3eb3bf5bd22a",
   "sourceBranch": "main",
-  "sourceWorkingTree": "clean at extraction",
+  "sourceWorkingTree": "fixed committed Git objects only",
   "licenseFilesAtRoot": [],
   "entries": [
     {
       "source": "docs/00-规范/STD-001-文档治理规则.md",
-      "sourceSha256": "39b2611e60409b8d54c6364d21c26bb203c42b3bfb287c6ca044ca65e8d4126e",
+      "sourceSha256": "33e174feef8d04543aa658c17f70630838c8e11f99c033eaa6e9ffcd371c4100",
       "targets": [
         "docs/00-规范/STD-001-文档治理规则.md"
       ],
-      "changes": "保留通用规则；移除来源历史批次、产品标识及不存在的项目链接；专属命令改为项目配置"
+      "changes": "保留通用规则；移除来源历史批次、产品标识及不存在的项目链接；专属命令改为项目配置；未复制蜂巢副产物的本机目录与专用维护索引"
     },
     {
       "source": "docs/00-规范/STD-002-中文写作规范.md",
@@ -71,11 +71,11 @@
     },
     {
       "source": "docs/00-规范/STD-007-开发验证规范.md",
-      "sourceSha256": "ef584a7ae8f7e76d8c8c49acd221e649911eccd525e7bb83210a039869134c0a",
+      "sourceSha256": "1a83eb7130ea970dfbfaaf31e9fca1eb3fe85c23a0acd0a3dab5c8c271fe6e18",
       "targets": [
         "docs/00-规范/STD-007-开发验证规范.md"
       ],
-      "changes": "重写项目工具链、验证档位和隔离条件，排除数据库变量、开发环境与部署授权"
+      "changes": "重写项目工具链、验证档位和隔离条件，排除数据库变量、开发环境与部署授权；保留按实际影响验证与macOS临时目录建议，不纳入来源部署环境"
     },
     {
       "source": "scripts/lib/governance/issue-registry.mjs",
@@ -154,8 +154,8 @@
       "source": "docs/11-手册/02-研发流程手册/01-认识ACDL：为什么蜂巢需要新的研发体系.md",
       "sourceSha256": "dcd95d089a9f4ebd856a67e4394585f6b70c8c10d1fd07925d64f1a4a57429b2",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -163,8 +163,8 @@
       "source": "docs/11-手册/02-研发流程手册/02-冷启动：从想法到项目骨架.md",
       "sourceSha256": "813ce82060f5ba2bf6583e31d8b351da8cc646975d0fe5a3e8d1a708d73d003b",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -172,8 +172,8 @@
       "source": "docs/11-手册/02-研发流程手册/03-文档工程：像维护代码一样建设文档.md",
       "sourceSha256": "4ad5fee7521a4dac6254dd192beac728d28037c73f974e3ac296a3c98e9c7c2f",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -181,8 +181,8 @@
       "source": "docs/11-手册/02-研发流程手册/04-流程总览：需求怎样走完整个ACDL.md",
       "sourceSha256": "abc984dfd5825b0e64c4150b1c64a64b62ba62c12973c1f4d5741b5ad9215945",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -190,8 +190,8 @@
       "source": "docs/11-手册/02-研发流程手册/05-需求管理：决定为什么要改变产品.md",
       "sourceSha256": "3ce435f3e876a2cf27885384c46adbbdc1ea4383baae76fde4031662afe977d9",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -199,8 +199,8 @@
       "source": "docs/11-手册/02-研发流程手册/06-产品与架构设计：共同决定系统应该怎样工作.md",
       "sourceSha256": "d74e301acba4d48e16f63f5f300c399964e06f832b7a3030870e92fbdbed6787",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -208,8 +208,8 @@
       "source": "docs/11-手册/02-研发流程手册/07-ACL启动：把设计拆成可以独立验证的任务.md",
       "sourceSha256": "6deaa326e518cff1216ea8ee2f56fa95f6adf43bacf41eb764a8e6ed5dff5ab5",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -217,8 +217,8 @@
       "source": "docs/11-手册/02-研发流程手册/08-并行开发：让多个Agent在不同worktree工作.md",
       "sourceSha256": "a3c888930ab4dc1a212e92fe62500e7090a6d679c76ce2ef2d4368eb0b7c4bd7",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -226,8 +226,8 @@
       "source": "docs/11-手册/02-研发流程手册/09-实施与发布：完成代码、验证并更新环境.md",
       "sourceSha256": "ac96147a9aa7168bf6bd34b46b9dea8b84515a427f69ac5ceba4a87c650c54c2",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -235,8 +235,8 @@
       "source": "docs/11-手册/02-研发流程手册/10-DFL与ERL：通过真实使用和独立评审发现遗漏.md",
       "sourceSha256": "a18a769ed5b0194900fd89acdb01f2ada1b00c02fce9c5b2ca6bddbc1a746873",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -244,8 +244,8 @@
       "source": "docs/11-手册/02-研发流程手册/11-版本形成：结束Loop并冻结正式版本.md",
       "sourceSha256": "c2c9904b870d369cf5436b5d3cec5bf5c3f5eb97ed3c6ac6092beab8fec60edc",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -253,8 +253,8 @@
       "source": "docs/11-手册/02-研发流程手册/12-流程选择：不同工作从哪里开始，在哪里结束.md",
       "sourceSha256": "44d1ea2227a09af4c92423b970c9935a884a914987accf39f16d216073c20921",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -262,8 +262,8 @@
       "source": "docs/11-手册/02-研发流程手册/13-附录A：ACDL术语和对象关系.md",
       "sourceSha256": "1781cf64347f643d8df92d07394654f22b7883df6f7d7afc7fb21123d20402c3",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -271,8 +271,8 @@
       "source": "docs/11-手册/02-研发流程手册/14-附录B：登记表、状态和常用命令.md",
       "sourceSha256": "f93d42c3845a4bba1bd29e79d9a0b3795c8934c6c0b08ea8772185ecb0ba19ac",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -280,8 +280,8 @@
       "source": "docs/11-手册/02-研发流程手册/15-附录C：设计要求与验证追踪.md",
       "sourceSha256": "f4b0455c1394ba948de058100fa149c68cc304dd1b94b29945f56f2c192cb9b4",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
@@ -289,14 +289,14 @@
       "source": "docs/11-手册/02-研发流程手册/README.md",
       "sourceSha256": "50fe50fc21cd6812412fc75c98a2f905a469e06850501a75b3eb5383c18a1247",
       "targets": [
-        "docs/guide.md",
-        "docs/tools.md"
+        "docs/02-协作指南.md",
+        "docs/03-工具与命令.md"
       ],
       "changes": "合并提炼角色、对象、流程、并行、追踪与版本；排除来源业务实例、原仓库命令表及环境信息"
     },
     {
       "source": "AGENTS.md",
-      "sourceSha256": "3d9bb0fcbc0826fd277525cb86263686a1539178fdeef5ecef5629fde0093a65",
+      "sourceSha256": "7539d86b6d4163802ffc3f4fa89f91d7489fe9b2bb209b3991eeb42db2acd3e5",
       "targets": [
         "AGENTS.md",
         "templates/AGENTS.md"
@@ -311,5 +311,14 @@
       ],
       "changes": "提炼问题、变化、验证和未完成范围"
     }
-  ]
+  ],
+  "previousSourceCommit": "3d3a634be5b401ef02740fdbebd00fcdc16fb2ff",
+  "reviewedOn": "2026-10-20",
+  "localAdditions": {
+    "scripts/demo.mjs": "本仓库新建的非空教学示例生成器，非来源同名工具",
+    "docs/01-快速开始.md": "面向公开使用者的入门教程",
+    "docs/04-完整示例.md": "可运行示例的文件、检查与局限说明",
+    "docs/05-维护与来源.md": "通用整理稿维护与来源更新方式",
+    ".github/workflows/checks.yml": "只读离线CI，验证Node.js22和24"
+  }
 }

@@ -1,28 +1,101 @@
-# hive-acdl
+# ACDL：Director与Agent协同研发
 
-ACDL（Agent Collaborative Development Lifecycle）是一套由人（Director）指挥Agent协同研发的方法、规范、模板与本地工具。Director决定方向、边界和重要取舍，Agent负责在授权范围内实施、验证并留下可核对的证据。
+**[官网与完整方法手册](https://www.bluexiii.com/acdl/) · [快速开始](docs/01-快速开始.md) · [完整示例](docs/04-完整示例.md) · [Apache-2.0](LICENSE)**
 
-ACDL关注“人怎样指挥Agent协作”；HiveFlow关注“流程怎样在授权范围内自动流转”。二者可以协作，但不互相替代。本项目是规范与工具仓库，现有网站仓库独立维护。
+ACDL（Agent Collaborative Development Lifecycle）是一套让人和Agent一起完成软件研发的方法、规范、模板与本地工具。Director负责方向、边界和重要取舍，Agent负责调查、实现、验证和留下证据。它关注的不只是代码怎样写出来，还包括依据从哪里来、多人怎样交接，以及怎样判断工作可以结束。
 
-## 快速开始
+你可以只借用一份任务模板，也可以逐步建立需求、设计、实施、反馈和版本的完整记录。小修改直接实现和检查；重要变化补必要需求与设计；需要持续协调或长期证据时，再建立Loop。不会因为用了ACDL，就要求每次修改填写全套文档。
 
-需要Node.js 22+、npm；分支检查和差异检查需要Git。不需要安装依赖，没有业务服务、数据库或部署步骤。
+本项目源自蜂巢实践，是独立整理的通用规范与工具库。官网提供连续教程，本仓库提供可下载、改编和离线使用的规范、模板与脚本；不需要访问来源私有仓库。
+
+## 它帮助你解决什么
+
+|遇到的情况|ACDL提供的办法|
+|---|---|
+|换一个Agent就不知道哪些决定还有效|把需求、设计、过程和版本各自放在负责的位置，交接固定提交与工作区差异|
+|Agent写得很快，但目标或授权不清楚|先说明目标、非目标、范围、验收和停止条件|
+|多个任务互相覆盖，合入顺序混乱|按任务划分文件与依赖，需要隔离时使用分支和worktree，由负责人统一验证与合入|
+|测试通过，却不知道是否真正交付|分开记录实现、自动化验证、真实使用、独立评审、部署和正式版本|
+|设计要求写在文档里，后来不知道怎么验证|稳定要求编号对应定义、摘要和直接验证位置，由工具检查关系|
+
+ACDL可以用于有人类负责人和Agent共同工作的软件项目，不绑定特定模型、IDE或云平台。采用项目仍需决定自己的权限、工具链和环境要求。
+
+## 五分钟试用
+
+需要Node.js22或更新版本，以及Git。工具只使用Node.js标准库，**没有第三方npm依赖，不需要运行npm install**。
 
 ```sh
+git clone https://github.com/xiiiblue/hive-acdl.git
+cd hive-acdl
 npm run check
 npm test
-npm run branch:check
-npm run process:metrics -- --format=json
+npm run demo
 ```
 
-从[使用指南](docs/guide.md)选择流程，从[规范入口](docs/00-规范/README.md)查长期规则，从[模板](templates/README.md)建立记录，从[工具说明](docs/tools.md)了解参数、写入和采用方式。
+macOS运行验证前先设`export TMPDIR=/tmp`。
 
-## 仓库内容
+前三项检查仓库和工具；`demo`在本项目`.tmp/`新建独立目录，生成一条“需求→设计要求→示例代码→真实测试→追踪视图”的合成链路。它会运行示例测试和检查，保留生成目录供你阅读，既不覆盖现有项目，也不访问业务服务。
 
-- `docs/00-规范/`：九项规范的通用整理稿，当前为Review，供采用项目确认。
-- `docs/guide.md`：角色、冷启动、需求、设计、ACL/DFL/ERL、并行与版本。
-- `templates/`：Agent入口、需求、设计、ADR、Issue、三类Loop、交接与版本模板。
-- `scripts/`：本地检查、设计追踪、关系校验、统计和纯Loop函数。
-- `docs/01-需求/`、`docs/02-设计/`、`docs/03-实施/`、`tests/traceability/`：空白可运行骨架，不包含蜂巢业务记录。
+接下来可以：
 
-本仓库暂为私有，未选开源许可证。见[权利说明](NOTICE.md)、[来源清单](provenance/README.md)及[贡献与验证](CONTRIBUTING.md)。
+- 只想学习方法：先看[协作指南](docs/02-协作指南.md)，再到官网按章节阅读。
+- 想用于已有项目：按[快速开始](docs/01-快速开始.md)选择模板与工具，保留自己的AGENTS和权限规则。
+- 想理解如何留下证据：运行示例，按[完整示例](docs/04-完整示例.md)逐份检查文件。
+- 想研究规则：从[九项规范](docs/00-规范/README.md)按任务选择。
+
+## 核心对象怎样配合
+
+|对象|回答的问题|
+|---|---|
+|REQ，需求|为什么改变，希望得到什么结果|
+|SYS、CAP、CRS，三类设计|系统整体、具体能力和跨能力规则应该怎样工作|
+|ADR，决定记录|重要取舍为什么这样决定|
+|Issue，问题|发现了什么，后续由哪里处理|
+|ACL，实施Loop|这轮准备改什么，怎样实现和自动化验证|
+|DFL，真实使用反馈Loop|固定候选在实际使用中表现怎样|
+|ERL，独立工程评审Loop|没有参与实施的评审者发现了什么|
+|版本与交接|实际交付哪些内容，下一位接手者需要知道什么|
+
+Loop指有明确起点、范围、证据和结论的一轮工作。ACL、DFL和ERL彼此独立，按风险选择；Completed表示该轮按依据结束，正式版本另按真实交付范围确认。
+
+## 仓库里有什么
+
+```text
+docs/00-规范/          STD-001至STD-009通用规则
+docs/01-快速开始.md    学习、已有项目采用与工具试用
+docs/02-协作指南.md    角色、路径、设计、Loop与交接
+docs/03-工具与命令.md  命令、参数、写入范围及能力边界
+docs/04-完整示例.md    可运行的合成需求与验证链路
+templates/            AGENTS、REQ、设计、三类Loop及版本等模板
+scripts/              本地检查、追踪、统计与Loop纯函数
+provenance/           上游来源、整理说明和验证记录
+```
+
+规范整理稿保持Review，表示采用项目需要按自己的实际范围确认；这与仓库代码的Apache-2.0许可是两回事。空白需求、设计、实施与追踪目录是可运行骨架，不是已完成的业务记录。
+
+## 常用命令
+
+|命令|用途|写入范围|
+|---|---|---|
+|`npm run check`|文档链接、常见敏感形态、设计追踪与关系检查|只读|
+|`npm test`|工具正例与拒绝路径回归|`.tmp/`合成目录|
+|`npm run demo`|生成并验证完整教学示例|新建`.tmp/acdl-demo-*`|
+|`npm run trace:check`|核对稳定要求、定义摘要与验证标记|只读|
+|`npm run trace:render`|生成设计追踪视图|追踪Markdown生成区|
+|`npm run trace:refresh -- --reviewed`|人工复核后刷新定义摘要|追踪JSON，不代替测试|
+|`npm run process:metrics -- --format=json`|读取Loop记录并统计周期与缺口|只读|
+|`npm run branch:check`、`npm run diff:check`|核对Git分支和差异|只读|
+
+完整参数见[工具与命令](docs/03-工具与命令.md)。本项目没有自动派发、Issue同步、自动结束Loop或部署服务；这些能力由采用项目按自己的权限与证据要求接入。
+
+## 与HiveFlow和蜂巢的关系
+
+蜂巢是这套方法形成和实践的项目。ACDL组织工程研发，HiveFlow连接源头反馈、采纳与授权、本地交付和原来源回执。可以只使用ACDL，也可以结合[HiveFlow](https://github.com/xiiiblue/hive-flow)；两者不会因为同时使用就继承对方的业务权限。
+
+本项目从HiveOS的规范、介绍与适用工具中提取通用内容，排除了业务源码、真实记录、部署、账户和环境授权。来源与改写见[来源说明](provenance/README.md)，维护方式见[贡献说明](CONTRIBUTING.md)。
+
+## 许可、贡献与安全
+
+本仓库文档、模板和代码以[Apache License 2.0](LICENSE)发布，来源声明见[NOTICE](NOTICE)。欢迎提交问题、改进说明和带有复现与检查结果的Pull Request；请先读[贡献说明](CONTRIBUTING.md)。
+
+示例只用合成数据。报告安全问题时遵循[安全说明](SECURITY.md)，不要把凭据、私人消息或真实业务数据贴进公开Issue。开源许可不提供真实平台账号、环境权限或适配完成的保证。

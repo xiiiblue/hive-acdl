@@ -1,0 +1,9 @@
+hive-acdl
+Copyright 2026 ACDL contributors.
+
+This work includes generic documentation, templates and local tools extracted
+and adapted from the HiveOS project, with authorization for this distribution.
+Source provenance and modification notes are included in provenance/.
+
+Licensed under the Apache License, Version 2.0.
+Project website: https://www.bluexiii.com/acdl/

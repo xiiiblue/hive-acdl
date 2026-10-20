@@ -78,3 +78,19 @@ test('链接/锚点、敏感模式和路径越界检查有拒绝案例', async t
   assert.ok(scanText(['192', '168', '1', '2'].join('.')).includes('private-network'));
   assert.ok(scanText('-----BEGIN ' + 'PRIVATE KEY-----').includes('private-key'));
 });
+
+
+test('完整示例仅写临时目录，真实断言可以发现越权记录', async t => {
+  const root = fixture(t);
+  const original = readFileSync(resolve(root, 'tests/traceability/design-requirements.json'), 'utf8');
+  const { createDemo } = await mod(root, 'scripts/demo.mjs');
+  const result = createDemo(root);
+  assert.ok(result.directory.startsWith(resolve(root, '.tmp') + '/'));
+  assert.equal(result.requirements, 1);
+  assert.equal(readFileSync(resolve(root, 'tests/traceability/design-requirements.json'), 'utf8'), original);
+  const manifest = JSON.parse(readFileSync(resolve(result.directory, 'tests/traceability/design-requirements.json'), 'utf8'));
+  assert.equal(manifest.requirements[0].origin, 'REQ-000001');
+  put(result.directory, 'src/export-demo.mjs', 'export const visibleRecords = (user, records) => records;\n');
+  const environment = { ...process.env }; delete environment.NODE_TEST_CONTEXT;
+  assert.notEqual(spawnSync(process.execPath, ['--test', 'tests/export-demo.test.mjs'], {cwd: result.directory, env: environment}).status, 0);
+});

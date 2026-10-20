@@ -16,6 +16,13 @@
     "trace:render": "node scripts/generate/render-traceability.mjs",
     "trace:refresh": "node scripts/generate/refresh-traceability-digests.mjs",
     "process:metrics": "node scripts/verify/process-metrics.mjs",
-    "diff:check": "git diff --check"
+    "diff:check": "git diff --check",
+    "demo": "node scripts/demo.mjs"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://www.bluexiii.com/acdl/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiiiblue/hive-acdl.git"
   }
 }
