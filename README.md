@@ -96,6 +96,6 @@ provenance/           上游来源、整理说明和验证记录
 
 ## 许可、贡献与安全
 
-本仓库文档、模板和代码以[Apache License 2.0](LICENSE)发布，来源声明见[NOTICE](NOTICE)。欢迎提交问题、改进说明和带有复现与检查结果的Pull Request；请先读[贡献说明](CONTRIBUTING.md)。
+本仓库文档、模板和代码以[Apache License 2.0](LICENSE)发布，来源声明见[NOTICE](NOTICE)。官网源码[acdl仓库](https://github.com/xiiiblue/acdl)同样采用Apache-2.0，并保留其自身LICENSE与NOTICE；第三方材料遵循各自声明。欢迎提交问题、改进说明和带有复现与检查结果的Pull Request；请先读[贡献说明](CONTRIBUTING.md)。
 
 示例只用合成数据。报告安全问题时遵循[安全说明](SECURITY.md)，不要把凭据、私人消息或真实业务数据贴进公开Issue。开源许可不提供真实平台账号、环境权限或适配完成的保证。
